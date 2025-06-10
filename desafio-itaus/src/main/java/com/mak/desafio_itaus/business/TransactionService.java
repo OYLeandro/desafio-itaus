@@ -31,16 +31,19 @@ public class TransactionService {
             }
 
             listTransactions.add(dto);
+            log.info("Dados da Transação adicionado com sucesso!");
         }
 
         public void deleteTransactions(){
+            log.info("Apagando dados de transação...");
             listTransactions.clear();
             log.info("Dados da transações apagado!");
         }
 
         public List<TransactionResquestDto> finByTransaction(Integer timeInterval){
+            log.info("Buscando Transações...");
             OffsetDateTime dateTimeInterval =  OffsetDateTime.now().minusSeconds(timeInterval);
-
+            log.info("Busca concluida com sucesso!");
             return listTransactions.stream()
                     .filter(transaction -> transaction.dataHora().isAfter(dateTimeInterval))
                     .toList();
