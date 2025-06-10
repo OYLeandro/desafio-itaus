@@ -19,6 +19,10 @@ public class StatisticService {
       log.info("Calculando estatistica das transações...");
         List<TransactionResquestDto> transaction = transactionService.finByTransaction(timeInterval);
 
+        if(transaction.isEmpty()){
+            return new StatisticRequestDto(0L,0.0,0.0,0.0,0.0);
+        }
+
         DoubleSummaryStatistics transactionStatistic = transaction.stream()
                 .mapToDouble(TransactionResquestDto::valor).summaryStatistics();
         log.info("Calculado com sucesso!");
