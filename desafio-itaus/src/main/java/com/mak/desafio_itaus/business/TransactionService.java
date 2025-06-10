@@ -33,7 +33,7 @@ public class TransactionService {
             listTransactions.add(dto);
         }
 
-        private void deleteTransactions(){
+        public void deleteTransactions(){
             listTransactions.clear();
             log.info("Dados da transações apagado!");
         }
